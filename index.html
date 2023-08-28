@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F to C converter</title>
+    <link rel="stylesheet" href="./assets/stylesheet/master.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body class="w-full h-[100vh] flex flex-wrap justify-center items-center">
+    <div class="box w-[60%] h-[60%] ">
+        <span title="Close Tab">X</span>
+        <h2 class="h-[20%] w-full flex flex-wrap justify-center items-center">Celsius To Fahrenheit</h2>
+        <div class="w-full h-[20%] flex flex-wrap justify-center items-center"><input type="number" name=""
+                placeholder="Celsius to Fahrenheit" id="" class="w-[60%] h-[50%]"></div>
+        <h3 class="h-[20%] w-full flex flex-wrap justify-center items-center"></h3>
+        <div class="w-full h-[20%] flex-wrap flex justify-evenly items-center"> <button class="w-[20%] h-[36%] flex-wrap flex justify-center items-center " id="conv">Convert</button>
+            <button class="w-[18%] h-[36%] flex-wrap flex justify-center items-center " id="reset">Reset</button>
+            <button class="w-[18%] h-[36%] flex-wrap flex justify-center items-center " id="change"><i class="bi bi-shuffle"></i></button>
+        </div>
+    </div>
+
+
+    <script>
+        let i = 1
+        let _inp = document.getElementsByTagName('input')[0]
+        let _h3 = document.getElementsByTagName('h3')[0]
+        let _h2 = document.getElementsByTagName('h2')[0]
+        let _exit = document.getElementsByTagName('span')[0]
+        _inp.focus()
+        let _reset = document.getElementById('reset').addEventListener('click',()=>{
+            location.reload()
+        })
+        let _change = document.getElementById('change')
+        _change.addEventListener('click',()=>{
+            i++
+            _inp.value = ''
+            _inp.focus()
+            _h3.innerHTML=''
+
+            if(i%2){
+                _h2.innerHTML='Celsius To Fahrenheit'
+                _inp.setAttribute('placeholder', 'Celsius To Fahrenheit')
+            }
+            else{
+                _h2.innerHTML='Fahrenheit to Celsius'
+                _inp.setAttribute('placeholder' , 'Fahrenheit To Celsius')
+
+            }
+            console.log(i);
+        })
+        let _conv = document.getElementById('conv')
+        _conv.addEventListener('click',()=>{
+            let x = _inp.value
+            if(i%2){
+                let ctof =Math.floor(((x*9)/5)+32)
+                _h3.innerHTML= 'Temp is : '+ctof+' F' 
+
+            }else{
+                let ftoc = Math.floor(((x-32)*5)/9)
+                _h3.innerHTML = 'Temp is : '+ftoc+' C' 
+            }
+        })
+        
+        _exit.addEventListener('click',()=>{
+            window.close()
+        })
+        //developed by bardia (mohammad) ghadaksaz
+    </script>
+</body>
+
+</html>
